@@ -1,0 +1,31 @@
+{% comment %}
+  Block demo đơn giản cho product page
+{% endcomment %}
+
+<div class="demo-block">
+  <p style="padding: 12px; border: 1px dashed #999; border-radius: 8px;">
+    👋 Xin chào từ app <strong>{{ block.settings.title }}</strong><br>
+    Nội dung: {{ block.settings.content }}
+  </p>
+</div>
+
+{% schema %}
+{
+  "name": "Demo block from app",
+  "target": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Tiêu đề",
+      "default": "Demo block"
+    },
+    {
+      "type": "text",
+      "id": "content",
+      "label": "Nội dung",
+      "default": "Đây là block thêm từ Shopify app."
+    }
+  ]
+}
+{% endschema %}

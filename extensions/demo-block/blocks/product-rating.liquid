@@ -1,0 +1,27 @@
+{% comment %}
+  Block hiển thị rating của sản phẩm từ metafield rating_app.rating_value
+{% endcomment %}
+
+{% assign rating = product.metafields.rating_app.rating_value.value %}
+
+<div class="product-rating-from-app">
+  {% if rating %}
+    {% assign r = rating | plus: 0 %}
+    <span>Rating: {{ r }}/5</span>
+    <span>
+      {%- for i in (1..5) -%}
+        {% if i <= r %}★{% else %}☆{% endif %}
+      {%- endfor -%}
+    </span>
+  {% else %}
+    <span>Chưa có rating</span>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Product rating (from app)",
+  "target": "section",
+  "settings": []
+}
+{% endschema %}
